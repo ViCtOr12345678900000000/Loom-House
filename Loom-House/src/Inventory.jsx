@@ -190,7 +190,7 @@ export default function Inventory() {
         </div>
         <div className="bg-white border-[1.5px] border-black rounded-[24px] p-5 h-[132px] flex flex-col justify-between">
           <p className="text-[10px] tracking-[0.2em] font-bold text-zinc-500">INVENTORY VALUE</p>
-          <div><p className="text-[35px] font-extralight leading-none">₦{InventoryValue.toLocaleString()}</p><p className="text-[11px] text-zinc-500 mt-2">price × stock</p></div>
+          <div><p className="text-[25px] font-extralight leading-none">₦{InventoryValue.toLocaleString()}</p><p className="text-[11px] text-zinc-500 mt-2">price × stock</p></div>
         </div>
         <div className="bg-zinc-50 border border-zinc-200 rounded-[24px] p-5 h-[132px] flex flex-col justify-between">
           <div className="flex justify-between"><p className="text-[10px] tracking-[0.2em] font-bold text-zinc-500">LOW STOCK</p><span className="px-2 py-1 rounded-full bg-black text-white text-[9px] font-bold">ALERT</span></div>
