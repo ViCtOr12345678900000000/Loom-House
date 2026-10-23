@@ -169,7 +169,7 @@ export default function Inventory() {
           <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-bold">L</div>
           <div>
             <h1 className="font-bold text-[17px] leading-none">Loom House</h1>
-            <p className="text-[10px] tracking-[0.2em] text-zinc-500 font-bold mt-1">ATELIER INVENTORY</p>
+            <p className="text-[10px] tracking-[0.2em] text-zinc-500 font-extralight mt-1">ATELIER INVENTORY</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -186,19 +186,19 @@ export default function Inventory() {
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-6">
         <div className="relative bg-black text-white rounded-[24px] p-5 h-[132px] flex flex-col justify-between overflow-hidden">
           <div className="flex justify-between items-start z-10"><p className="text-[10px] tracking-[0.2em] font-bold text-zinc-400">TOTAL PRODUCTS</p><span className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center text-[11px]">↗</span></div>
-          <div className="z-10"><p className="text-[32px] font-bold leading-none">{products.length}</p><p className="text-[10px] mt-2 text-zinc-400">{filtered.length} SHOWING</p></div>
+          <div className="z-10"><p className="text-[39px] font-extralight leading-none">{products.length}</p><p className="text-[10px] mt-2 text-zinc-400">{filtered.length} SHOWING</p></div>
         </div>
         <div className="bg-white border-[1.5px] border-black rounded-[24px] p-5 h-[132px] flex flex-col justify-between">
           <p className="text-[10px] tracking-[0.2em] font-bold text-zinc-500">INVENTORY VALUE</p>
-          <div><p className="text-[28px] font-bold leading-none">₦{InventoryValue.toLocaleString()}</p><p className="text-[11px] text-zinc-500 mt-2">price × stock</p></div>
+          <div><p className="text-[35px] font-extralight leading-none">₦{InventoryValue.toLocaleString()}</p><p className="text-[11px] text-zinc-500 mt-2">price × stock</p></div>
         </div>
         <div className="bg-zinc-50 border border-zinc-200 rounded-[24px] p-5 h-[132px] flex flex-col justify-between">
           <div className="flex justify-between"><p className="text-[10px] tracking-[0.2em] font-bold text-zinc-500">LOW STOCK</p><span className="px-2 py-1 rounded-full bg-black text-white text-[9px] font-bold">ALERT</span></div>
-          <div><p className="text-[32px] font-bold leading-none">{LowStockCount}</p><p className="text-[11px] text-zinc-500 mt-1">Needs reorder</p></div>
+          <div><p className="text-[32px] font-extralight leading-none">{LowStockCount}</p><p className="text-[11px] text-zinc-500 mt-1">Needs reorder</p></div>
         </div>
         <div className="bg-white border border-dashed border-black rounded-[24px] p-5 h-[132px] flex flex-col justify-between">
           <p className="text-[10px] tracking-[0.2em] font-bold text-zinc-500">OUT OF STOCK</p>
-          <div className="flex justify-between items-end"><p className="text-[32px] font-bold leading-none">{OutOfStockCount}</p><div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-bold">{OutOfStockCount}/{products.length}</div></div>
+          <div className="flex justify-between items-end"><p className="text-[32px] font-extralight leading-none">{OutOfStockCount}</p><div className="w-12 h-12 rounded-full bg-black text-white flex items-center justify-center text-[10px] font-bold">{OutOfStockCount}/{products.length}</div></div>
         </div>
       </div>
 
@@ -241,7 +241,7 @@ export default function Inventory() {
               <div className={view === "Table" ? "md:col-span-2 flex justify-between md:block items-center" : "flex justify-between items-center mt-3"}>
                 <span className={`px-2.5 py-1 rounded-full text-[11px] border ${catStyle[p.category]}`}>{p.category}</span>
                 <span className="font-bold text-[14px] md:hidden">₦{p.price}</span>
-                {view !== "Table" && <span className="font-bold text-[16px]">₦{p.price}</span>}
+                {view !== "Table" && <span className="font-extralight text-[16px]">₦{p.price}</span>}
               </div>
               {/* Desktop Price */}
               {view === "Table" && <div className="hidden md:block md:col-span-1 font-bold text-[13px]">₦{p.price}</div>}
