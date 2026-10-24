@@ -4,6 +4,7 @@ export default function Inventory() {
   // ===== VIEW & FILTERS STATE =====
   const [view, setView] = useState("Table"); // Table or Card view for desktop
   const [search, setSearch] = useState("");
+  
   const [catFilter, setCatFilter] = useState("All");
   const [statusFilter, setStatusFilter] = useState("All");
   const [sortBy, setSortBy] = useState("Recent");
@@ -30,6 +31,9 @@ export default function Inventory() {
     price: "",
     stock: "",
   });
+
+  //sidebsr
+  const [showSidebar, setShowSidebar] = useState(false);
 
   // ===== MAIN PRODUCTS STATE - loads from localStorage =====
   const [products, setProducts] = useState(() => {
@@ -167,7 +171,8 @@ export default function Inventory() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-zinc-200">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center font-bold">L</div>
-          <div>
+          <div className="flex items-center gap-3">
+            <button  className="w-9 h-9 rounded-full bg-black text-white flex items-center justify-center" onClick={()=> setShowSidebar(true)}>☰</button>
             <h1 className="font-bold text-[17px] leading-none">Loom House</h1>
             <p className="text-[10px] tracking-[0.2em] text-zinc-500 font-extralight mt-1">ATELIER INVENTORY</p>
           </div>
@@ -268,7 +273,7 @@ export default function Inventory() {
 
       {/* ADD MODAL */}
       {showAdd && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className=" backdrop-blur-sm fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-[24px] w-full max-w-[440px] p-6">
             <div className="flex justify-between items-center mb-6"><h2 className="text-[18px] font-bold">Add Product</h2><button onClick={() => setShowAdd(false)} className="w-8 h-8 rounded-full border flex items-center justify-center">×</button></div>
             <div className="flex flex-col gap-3">
@@ -295,7 +300,7 @@ export default function Inventory() {
 
       {/* EDIT MODAL */}
       {showEdit && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className="backdrop-blur-sm fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-[24px] w-full max-w-[440px] p-6">
             <div className="flex justify-between items-center mb-6"><h2 className="text-[18px] font-bold">Edit Product</h2><button onClick={() => setShowEdit(false)} className="w-8 h-8 rounded-full border flex items-center justify-center">×</button></div>
             <div className="flex flex-col gap-3">
@@ -319,6 +324,37 @@ export default function Inventory() {
           </div>
         </div>
       )}
+      // SIDEBAR - WITH SLIDE ANIMATION
+<>
+  {/* Overlay */}
+  <div 
+    onClick={() => setShowSidebar(false)}
+    className={`fixed inset-0 bg-black/20 backdrop-blur-[2px] z-[60] transition-opacity duration-300 ${showSidebar ? "opacity-100" : "opacity-0 pointer-events-none"}`}
+  ></div>
+
+  {/* Sidebar */}
+  <div className={`fixed left-0 top-0 h-full w-[280px] bg-white z-[70] p-6 flex flex-col justify-between shadow-2xl transform transition-transform duration-300 ease-in-out ${showSidebar ? "translate-x-0" : "-translate-x-full"}`}>
+    <div>
+      <div className="flex justify-between items-center mb-8">
+        <div className="flex items-center gap-2">
+          <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center font-bold">L</div>
+          <p className="font-bold text-sm">Loom House</p>
+        </div>
+        <button onClick={() => setShowSidebar(false)} className="w-8 h-8 rounded-full border flex items-center justify-center">×</button>
+      </div>
+
+      <div className="flex flex-col gap-2">
+        <button className="text-left px-4 py-3 rounded-full bg-black text-white text-[13px]">● Inventory</button>
+        <button className="text-left px-4 py-3 rounded-full bg-zinc-100 text-[13px]">Analytics</button>
+        <button className="text-left px-4 py-3 rounded-full bg-zinc-100 text-[13px]">Orders</button>
+        <button className="text-left px-4 py-3 rounded-full bg-zinc-100 text-[13px]">Customers</button>
+        <button className="text-left px-4 py-3 rounded-full bg-zinc-100 text-[13px]">Settings</button>
+      </div>
+    </div>
+
+    <p className="text-[10px] text-zinc-400 border-t border-black pt-4">© 2026 LOOM HOUSE<br/>Atelier Inventory System</p>
+  </div>
+</>
     </div>
   );
 }
