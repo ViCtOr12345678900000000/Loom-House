@@ -324,7 +324,7 @@ export default function Inventory() {
           </div>
         </div>
       )}
-      // SIDEBAR - WITH SLIDE ANIMATION
+      
 <>
   {/* Overlay */}
   <div 
